@@ -1,0 +1,23 @@
+alphabet_ru = 'абвгдеёжзийклмнопрстуфхцчшщъыьэюяабвгдеёжзийклмнопрстуфхцчшщъыьэюя' #алфавит на русском
+alphabet_en = 'abcdefghijklmnopqrstuvwxyzabcdefghijklmopqrstuvwxyz' #алфавит на английском
+encryption_step = int(input('Шаг: ')) #смещение 
+language = input('ру/en ').lower() #язык ввода
+mes_to_enc = input('Сообщение для шифровки: '.lower())  #вводим сообщение для шифровки
+encryption = ''                                         #вывод зашифрованного слова
+if language == 'ру':                                    #проверяем язык ввода
+    for i in mes_to_enc:                                #шифрование на русском языке
+        place = alphabet_ru.find(i)                     
+        place2 = place + encryption_step
+        if i in alphabet_ru:
+            encryption += alphabet_ru[place2]
+        else:
+            encryption += i
+else:
+    for i in mes_to_enc:                                #шифрование на английском языке
+        place = alphabet_en.find(i)
+        place2 = place + encryption_step
+        if i in alphabet_en:
+            encryption += alphabet_en[place2]
+        else:
+            encryption += i
+print(encryption)
