@@ -1,0 +1,16 @@
+import random
+
+P = random.randint(0,10000)
+G = random.randint(0,10000)
+alice_key = random.randint(0,10000) #приватный ключ Алисы
+bob_key = random.randint(0,10000)   #приватный ключ Боба
+print("Алиса сгенерировла приватный ключ:", alice_key)
+print("Боб сгенерировал приватный ключ:", bob_key)
+alice_key2 = int(G**alice_key % P) #новый ключ Алисы
+bob_key2 = int(G**bob_key % P)     #новый ключ Боба 
+print("Новый ключ Алисы:", alice_key2)
+print("Новый ключ Боба:", bob_key2)
+sync_key_Alice = int(bob_key2**alice_key % P)
+sync_key_Bob = int(alice_key2**bob_key % P)
+if sync_key_Alice == sync_key_Bob: #Проверка секретного ключа
+	print('Секретный ключ беседы:', sync_key_Alice, sync_key_Bob)
